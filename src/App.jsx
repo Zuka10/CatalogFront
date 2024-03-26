@@ -5,6 +5,7 @@ import AdminPanel from "./layouts/AdminLayout";
 import Dashboard from "./adminpanel/Dashboard";
 import Index from "./adminpanel/category";
 import PageNotFound from "./404/PageNotFound";
+import Create from "./adminpanel/category/create";
 function App() {
   return (
     <div>
@@ -20,8 +21,11 @@ function App() {
         <Route path="/" element={<AdminPanel />}>
           <Route path="adminpanel/dashboard" element={<Dashboard />} />
           <Route path="/adminpanel/categories" element={<Index />}></Route>
-          {/* <Route path="/adminpanel/category/create-data" element={<Create />} />
           <Route
+            path="/adminpanel/categories/create-category"
+            element={<Create />}
+          />
+          {/* <Route
             path="/adminpanel/category/:categoryId/edit"
             element={<Update />}
           />

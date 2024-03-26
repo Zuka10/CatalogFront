@@ -27,7 +27,7 @@ function Index() {
     setIsLoading(true);
     try {
       await axios
-        .get("https://63918j1f-7215.euw.devtunnels.ms/category")
+        .get("category")
         .then((res) => {
           setMovies(res.data);
         })
@@ -46,7 +46,7 @@ function Index() {
   const deleteCategory = async (id) => {
     try {
       await axios
-        .delete(`https://63918j1f-7215.euw.devtunnels.ms/category/${id}`)
+        .delete(`category/${id}`)
         .then(() => {
           getCategory();
           toast.success(successfullyMessage, {
@@ -75,9 +75,9 @@ function Index() {
       <Nameless
         icon={<CircleStackIcon />}
         btnIcon={<PlusIcon />}
-        title="All Movies"
-        path="create-data"
-        action="Add Movie"
+        title="All Category"
+        path="create-category"
+        action="Add Category"
       />
       <div className="mt-20">
         <input
