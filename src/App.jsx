@@ -4,6 +4,7 @@ import LandingPage from "./pages/LandingPage";
 import AdminPanel from "./layouts/AdminLayout";
 import Dashboard from "./adminpanel/Dashboard";
 import Index from "./adminpanel/category";
+import PageNotFound from "./404/PageNotFound";
 function App() {
   return (
     <div>
@@ -34,7 +35,7 @@ function App() {
             element={<UpdateProduct />}
           /> */}
         </Route>
-        {/* <Route path="*" element={<PageNotFound />} /> */}
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );

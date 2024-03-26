@@ -48,7 +48,7 @@ function LandingPage() {
                 <li>name: {item.name}</li>
                 <li>deccription:{item.description}</li>
                 <li>price: {item.unitPrice}</li>
-                <li>category: {item.categoryId}</li>
+                <li>category: {item.category}</li>
               </div>
             ))}
             {/* <div className="flex justify-center h-96">
