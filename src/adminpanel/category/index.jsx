@@ -107,7 +107,7 @@ function Index() {
                     {category.name}
                   </td>
                   <td className="w-1/4 p-4 px-6 text-center ">
-                    <Link to={`/adminpanel/movies/${category.id}/edit`}>
+                    <Link to={`/adminpanel/categories/${category.id}/edit`}>
                       <button className="ml-4">
                         <PencilIcon className="w-6 h-6 text-blue-300 hover:text-blue-500 dark:text-slate-700 hover:dark:text-slate-500" />
                       </button>

@@ -6,6 +6,7 @@ import Dashboard from "./adminpanel/Dashboard";
 import Index from "./adminpanel/category";
 import PageNotFound from "./404/PageNotFound";
 import Create from "./adminpanel/category/create";
+import Update from "./adminpanel/category/update";
 function App() {
   return (
     <div>
@@ -25,11 +26,11 @@ function App() {
             path="/adminpanel/categories/create-category"
             element={<Create />}
           />
-          {/* <Route
-            path="/adminpanel/category/:categoryId/edit"
+          <Route
+            path="/adminpanel/categories/:categoryId/edit"
             element={<Update />}
           />
-          <Route path="/adminpanel/product" element={<Product />}></Route>
+          {/* <Route path="/adminpanel/product" element={<Product />}></Route>
           <Route
             path="/adminpanel/product/create-quote"
             element={<CreateProduct />}
