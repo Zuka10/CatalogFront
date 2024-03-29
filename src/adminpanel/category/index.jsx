@@ -16,7 +16,7 @@ import Nameless from "../../components/adminPanelComponents/Namless";
 import toast, { Toaster } from "react-hot-toast";
 
 function Index() {
-  const [categories, setMovies] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState("");
   useEffect(() => {
@@ -29,7 +29,7 @@ function Index() {
       await axios
         .get("category")
         .then((res) => {
-          setMovies(res.data);
+          setCategories(res.data);
         })
         .catch((err) => {
           console.log(err);
