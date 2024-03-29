@@ -3,10 +3,13 @@ import FrontendLayout from "./layouts/FrontendLayout";
 import LandingPage from "./pages/LandingPage";
 import AdminPanel from "./layouts/AdminLayout";
 import Dashboard from "./adminpanel/Dashboard";
-import Index from "./adminpanel/category";
+import GetAllCategory from "./adminpanel/category";
+import CreateCategory from "./adminpanel/category/create";
+import UpdateCategory from "./adminpanel/category/update";
+import GetAllProduct from "./adminpanel/product";
+import CreateProduct from "./adminpanel/product/create";
+import UpdateProduct from "./adminpanel/product/update";
 import PageNotFound from "./404/PageNotFound";
-import Create from "./adminpanel/category/create";
-import Update from "./adminpanel/category/update";
 function App() {
   return (
     <div>
@@ -21,24 +24,30 @@ function App() {
         </Route> */}
         <Route path="/" element={<AdminPanel />}>
           <Route path="adminpanel/dashboard" element={<Dashboard />} />
-          <Route path="/adminpanel/categories" element={<Index />}></Route>
+          <Route
+            path="/adminpanel/categories"
+            element={<GetAllCategory />}
+          ></Route>
           <Route
             path="/adminpanel/categories/create-category"
-            element={<Create />}
+            element={<CreateCategory />}
           />
           <Route
             path="/adminpanel/categories/:categoryId/edit"
-            element={<Update />}
+            element={<UpdateCategory />}
           />
-          {/* <Route path="/adminpanel/product" element={<Product />}></Route>
           <Route
-            path="/adminpanel/product/create-quote"
+            path="/adminpanel/products"
+            element={<GetAllProduct />}
+          ></Route>
+          <Route
+            path="/adminpanel/products/create-product"
             element={<CreateProduct />}
           />
           <Route
             path="/adminpanel/product/:productId/edit"
             element={<UpdateProduct />}
-          /> */}
+          />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
