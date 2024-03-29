@@ -5,9 +5,7 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://63918j1f-7215.euw.devtunnels.ms/";
-axios.defaults.headers.post["Content-Type"] =
-  "application/x-www-form-urlencoded";
+axios.defaults.baseURL = "https://z6c107gz-7215.euw.devtunnels.ms/";
 axios.defaults.headers.post["Accept"] = "application/json";
 // axios.defaults.withCredentials = true;
 // axios.interceptors.request.use(function (config) {

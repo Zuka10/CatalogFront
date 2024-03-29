@@ -20,7 +20,7 @@ function LandingPage() {
     setIsLoading(true);
     try {
       await axios
-        .get("https://63918j1f-7215.euw.devtunnels.ms/product")
+        .get("product")
         .then((res) => {
           if (res.data) {
             setProduct(res.data);

@@ -49,14 +49,12 @@ function Update() {
   const updateCategory = async (data) => {
     console.log(data);
     const formData = new FormData();
-    formData.append("_method", "PUT");
+    // formData.append("_method", "PUT");
     formData.append("name", data.name);
 
     try {
-      await axios(`category/${id}`, {
-        name: FormData,
-        method: "POST",
-      })
+      await axios
+        .put(`category/${id}`, formData)
         .then(() => {
           toast.success(successfullyMessage, {
             className:
@@ -101,7 +99,7 @@ function Update() {
             <div className="mb-6">
               <label
                 className="block mb-2 text-xs font-bold text-gray-700 uppercase"
-                htmlFor="category-name"
+                htmlFor="categoryName"
               >
                 Name
               </label>
@@ -110,8 +108,8 @@ function Update() {
                   errors.name && "w-full p-2 border-2 border-red-700 rounded"
                 }`}
                 type="text"
-                name="category-name"
-                id="category-name"
+                name="categoryName"
+                id="categoryName"
                 {...register("name", {
                   required: emptyValueMessage,
                 })}
