@@ -85,7 +85,7 @@ function Index() {
           name="search"
           type="search"
           id="search"
-          placeholder="Search by movie"
+          placeholder="Search by cateogry"
           className="p-2 px-12 mb-4 bg-no-repeat rounded-lg shadow-sm outline-none dark:placeholder-gray-600 dark:bg-slate-800 dark:text-slate-500 bg bg-left-1 bg-search"
         />
       </div>
