@@ -96,8 +96,9 @@ function Index() {
               "id",
               "name",
               "description",
-              "unitPrice",
+              "Unit Price",
               "category",
+              "image",
               "action",
             ]}
           />
@@ -123,6 +124,18 @@ function Index() {
                   </td>
                   <td className="w-1/4 p-4 px-6 text-gray-500 dark:text-slate-600">
                     {product.category}
+                  </td>
+                  <td className="w-1/4 p-4 px-6 text-gray-500 dark:text-slate-600">
+                    <img
+                      className="ml-14 "
+                      key={product.id}
+                      src={`${import.meta.env.VITE_ecommerce_api}${
+                        product.images[0]
+                      }`}
+                      width="64"
+                      height="64"
+                      alt="movie img"
+                    />
                   </td>
                   <td className="w-1/4 p-4 px-6 text-center ">
                     <Link to={`/adminpanel/categories/${product.id}/edit`}>

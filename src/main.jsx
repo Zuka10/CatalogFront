@@ -5,7 +5,8 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://z6c107gz-7215.euw.devtunnels.ms/";
+// axios.defaults.baseURL = "https://c354bnll-7215.euw.devtunnels.ms/";
+axios.defaults.baseURL = import.meta.env.VITE_ecommerce_api;
 axios.defaults.headers.post["Accept"] = "application/json";
 // axios.defaults.withCredentials = true;
 // axios.interceptors.request.use(function (config) {
