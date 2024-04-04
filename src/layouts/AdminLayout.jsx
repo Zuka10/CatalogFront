@@ -35,14 +35,14 @@ function AdminPanel() {
   };
   return (
     <div className="h-screen bg-gray-200 dark:bg-gray-900 ">
-      <div className="dark:bg-gray-900 shadow-right dark:shadow-none md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 ">
+      <div className="dark:bg-gray-900 dark:shadow-none md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 ">
         <div className="flex flex-col flex-1 min-h-0">
-          <div className="flex items-center h-16 px-4 shadow-sm bg-slate-800 ">
-            <h1 className="text-xl font-bold text-white">Adminpanel</h1>
+          <div className="flex items-center h-16 px-4 bg-pikedDark">
+            <h1 className="text-xl font-bold text-red ">AdminPanel</h1>
           </div>
-          <div className="flex flex-col flex-1 overflow-hidden">
+          <div className="flex flex-col flex-1 overflow-hidden shadow-right bg-red">
             <nav className="flex-1 px-2 py-4 space-y-1">
-              <div className="flex items-center px-2 py-2 text-sm font-medium text-gray-900 dark:text-slate-600">
+              <div className="flex items-center px-2 py-2 text-sm font-medium text-pikedDark dark:text-slate-600">
                 CORE
               </div>
 
@@ -53,13 +53,13 @@ function AdminPanel() {
               />
               <Link
                 to="/"
-                className="flex items-center px-2 py-2 text-sm font-medium text-gray-700 rounded-md dark:hover:bg-slate-800 dark:shadow-none dark:hover:text-slate-600 hover:shadow-lg shadow-gray-500/50 hover:text-black "
+                className="flex items-center px-2 py-2 text-sm font-medium rounded-md text-pikedDark dark:hover:bg-slate-800 dark:shadow-none dark:hover:text-slate-600 hover:shadow-lg shadow-gray-500/50 hover:text-black "
                 target="_blank"
               >
                 <GlobeAltIcon className="flex-shrink-0 w-6 h-6 mr-3" />
                 View Website
               </Link>
-              <div className="flex items-center px-2 py-2 text-sm font-medium text-gray-900 dark:text-slate-600">
+              <div className="flex items-center px-2 py-2 text-sm font-medium text-pikedDark dark:text-slate-600">
                 INTERFACE
               </div>
               <NavLinkComponent
