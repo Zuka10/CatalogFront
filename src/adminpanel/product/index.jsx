@@ -75,31 +75,31 @@ function Index() {
       <Nameless
         icon={<CircleStackIcon />}
         btnIcon={<PlusIcon />}
-        title="All Product"
+        title="პროდუქტები"
         path="create-product"
-        action="Add Product"
+        action="დაამატე პროდუქტი"
       />
-      <div className="mt-20">
+      <div className="mt-20 ">
         <input
           onChange={(e) => setSearch(e.target.value)}
           name="search"
           type="search"
           id="search"
-          placeholder="Search by Product"
-          className="p-2 px-12 mb-4 bg-no-repeat rounded-lg shadow-sm outline-none dark:placeholder-gray-600 dark:bg-slate-800 dark:text-slate-500 bg bg-left-1 bg-search"
+          placeholder="მოძებნე..."
+          className="p-2 px-12 mb-4 bg-no-repeat rounded-lg shadow-inner outline-none bg-gray-300/50 dark:placeholder-gray-600 dark:bg-slate-800 dark:text-slate-500 bg bg-left-1 bg-search"
         />
       </div>
       <div>
-        <table className="w-full text-center divide-y divide-gray-200 shadow-md dark:divide-slate-700 ">
+        <table className="w-full text-center divide-y divide-gray-200 rounded-md shadow-2xl bg-gray-300/50 dark:divide-slate-700 ">
           <TableThead
             titles={[
               "id",
-              "name",
-              "description",
-              "Unit Price",
-              "category",
-              "image",
-              "action",
+              "სახელი",
+              "აღწერა",
+              "ფასი",
+              "კატეგორია",
+              "სურათი",
+              "ფუნქცია",
             ]}
           />
           <tbody className="flex flex-col items-center w-full overflow-y-hidden bg-white lg:overflow-x-hidden lg:overflow-y-scroll dark:bg-slate-800 rounded-b-md h-96 ">
