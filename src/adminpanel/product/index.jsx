@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import {
   CircleStackIcon,
+  EyeIcon,
   PlusIcon,
   PencilIcon,
   TrashIcon,
@@ -16,20 +17,20 @@ import Nameless from "../../components/adminPanelComponents/Namless";
 import toast, { Toaster } from "react-hot-toast";
 
 function Index() {
-  const [products, setProduct] = useState([]);
+  const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState("");
   useEffect(() => {
-    getProduct();
+    getProducts();
   }, []);
 
-  const getProduct = async () => {
+  const getProducts = async () => {
     setIsLoading(true);
     try {
       await axios
         .get("product")
         .then((res) => {
-          setProduct(res.data);
+          setProducts(res.data);
         })
         .catch((err) => {
           console.log(err);
@@ -48,7 +49,7 @@ function Index() {
       await axios
         .delete(`product/${id}`)
         .then(() => {
-          getProduct();
+          getProducts();
           toast.success(successfullyMessage, {
             className:
               "bg-gray-50 shadow-lg dark:bg-slate-900 dark:text-slate-500",
@@ -127,7 +128,7 @@ function Index() {
                   </td>
                   <td className="w-1/4 p-4 px-6 text-gray-500 dark:text-slate-600">
                     <img
-                      className="ml-6"
+                      className="ml-16"
                       key={product.id}
                       src={`${import.meta.env.VITE_ecommerce_api}${
                         product.images[0]
@@ -138,7 +139,12 @@ function Index() {
                     />
                   </td>
                   <td className="w-1/4 p-4 px-6 text-center ">
-                    <Link to={`/adminpanel/categories/${product.id}/edit`}>
+                    <Link to={`/adminpanel/products/${product.id}/show`}>
+                      <button className="ml-4">
+                        <EyeIcon className="w-6 h-6 text-pikedDark/70 hover:text-pikedDark dark:text-slate-700 hover:dark:text-slate-500" />
+                      </button>
+                    </Link>
+                    <Link to={`/adminpanel/products/${product.id}/edit`}>
                       <button className="ml-4">
                         <PencilIcon className="w-6 h-6 text-blue-400 hover:text-blue-500 dark:text-slate-700 hover:dark:text-slate-500" />
                       </button>

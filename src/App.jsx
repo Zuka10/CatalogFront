@@ -7,6 +7,7 @@ import GetAllCategory from "./adminpanel/category";
 import CreateCategory from "./adminpanel/category/create";
 import UpdateCategory from "./adminpanel/category/update";
 import GetAllProduct from "./adminpanel/product";
+import ShowProduct from "./adminpanel/product/show";
 import CreateProduct from "./adminpanel/product/create";
 import UpdateProduct from "./adminpanel/product/update";
 import PageNotFound from "./404/PageNotFound";
@@ -40,6 +41,10 @@ function App() {
             path="/adminpanel/products"
             element={<GetAllProduct />}
           ></Route>
+          <Route
+            path="/adminpanel/products/:productId/show"
+            element={<ShowProduct />}
+          />
           <Route
             path="/adminpanel/products/create-product"
             element={<CreateProduct />}
