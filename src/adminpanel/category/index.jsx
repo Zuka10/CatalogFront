@@ -116,7 +116,7 @@ function Index() {
                       onClick={() => deleteCategory(category.id)}
                       className="ml-2"
                     >
-                      <TrashIcon className="w-6 h-6 text-red-300 hover:text-red-500 dark:text-slate-700 hover:dark:text-slate-500" />
+                      <TrashIcon className="w-6 h-6 opacity-70 text-red hover:opacity-100 dark:text-slate-700 " />
                     </button>
                   </td>
                 </tr>

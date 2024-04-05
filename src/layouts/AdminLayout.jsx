@@ -1,11 +1,11 @@
 import {
   HomeIcon,
-  GlobeAltIcon,
+  WindowIcon,
   RectangleStackIcon,
   RectangleGroupIcon,
   ArrowRightStartOnRectangleIcon,
 } from "@heroicons/react/24/outline";
-
+// import { wi}
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavLinkComponent from "../components/adminPanelComponents/NavLinkComponent";
@@ -34,43 +34,41 @@ function AdminPanel() {
     }
   };
   return (
-    <div className="h-screen bg-gray-200 dark:bg-gray-900 ">
+    <div className="h-screen overflow-x-hidden dark:bg-gray-900">
       <div className="dark:bg-gray-900 dark:shadow-none md:flex md:w-64 md:flex-col md:fixed md:inset-y-0 ">
         <div className="flex flex-col flex-1 min-h-0">
-          <div className="flex items-center h-16 px-4 bg-pikedDark">
-            <h1 className="text-xl font-bold text-red ">AdminPanel</h1>
+          <div className="flex items-center h-16 px-4 bg-red">
+            <h1 className="text-xl font-bold text-white ">AdminPanel</h1>
           </div>
-          <div className="flex flex-col flex-1 overflow-hidden shadow-right bg-red">
+          <div className="flex flex-col flex-1 overflow-hidden shadow-right bg-pikedDark">
             <nav className="flex-1 px-2 py-4 space-y-1">
-              <div className="flex items-center px-2 py-2 text-sm font-medium text-pikedDark dark:text-slate-600">
-                CORE
-              </div>
+              {/* <div className="flex items-center px-2 py-2 text-sm font-medium text-white dark:text-slate-600">
+                მთავარი
+              </div> */}
 
               <NavLinkComponent
                 path="/adminpanel/dashboard"
                 icon={<HomeIcon />}
-                title="Dashboard"
+                title="მთავარი"
               />
-              <Link
+              {/* <Link
                 to="/"
-                className="flex items-center px-2 py-2 text-sm font-medium rounded-md text-pikedDark dark:hover:bg-slate-800 dark:shadow-none dark:hover:text-slate-600 hover:shadow-lg shadow-gray-500/50 hover:text-black "
+                className="flex items-center px-2 py-2 text-sm font-medium text-white rounded-md hover:text-white hover:bg-red dark:hover:bg-slate-800 dark:shadow-none dark:hover:text-slate-600 hover:shadow-lg shadow-gray-500/50 "
                 target="_blank"
               >
-                <GlobeAltIcon className="flex-shrink-0 w-6 h-6 mr-3" />
-                View Website
-              </Link>
-              <div className="flex items-center px-2 py-2 text-sm font-medium text-pikedDark dark:text-slate-600">
-                INTERFACE
-              </div>
+                <WindowIcon className="flex-shrink-0 w-6 h-6 mr-3" />
+                საიტის ნახვა
+              </Link> */}
+              {/* <div className="flex items-center px-2 py-2 text-sm font-medium text-red dark:text-slate-600"></div> */}
               <NavLinkComponent
                 path="/adminpanel/categories"
                 icon={<RectangleStackIcon />}
-                title="Category"
+                title="კატეგორია"
               />
               <NavLinkComponent
                 path="/adminpanel/products"
                 icon={<RectangleGroupIcon />}
-                title="Product"
+                title="პროდუქტი"
               />
             </nav>
           </div>
@@ -83,15 +81,23 @@ function AdminPanel() {
             <div className="flex items-center md:ml-6">
               {/* <ThemeSwitcher /> */}
               {/* <LanguageSwitcher /> */}
-              <div className="relative ml-3">
-                <div>
+              <div className="relative justify-around ml-3">
+                <div className="flex justify-around w-full ml-3">
+                  <Link
+                    to="/"
+                    className="flex items-center px-2 py-2 text-sm font-medium text-black rounded-md hover:text-white hover:bg-red dark:hover:bg-slate-800 dark:shadow-none dark:hover:text-slate-600 hover:shadow-lg shadow-gray-500/50 "
+                    target="_blank"
+                  >
+                    <WindowIcon className="flex-shrink-0 w-6 h-6 mr-3" />
+                    საიტის ნახვა
+                  </Link>
                   <button
                     type="button"
-                    className="flex items-center px-2 py-2 text-sm font-medium text-gray-800 bg-gray-300 rounded-md hover:bg-gray-400 hover:text-white dark:bg-slate-900 dark:text-slate-700 dark:hover:text-slate-600"
+                    className="flex items-center px-2 py-2 text-sm font-medium text-gray-800 rounded-md bg-pikedDark hover:bg-red hover:text-white dark:bg-slate-900 dark:text-slate-700 dark:hover:text-slate-600"
                     onClick={logoutSubmit}
                   >
-                    <ArrowRightStartOnRectangleIcon className="flex-shrink-0 w-6 h-6 text-gray-500 dark:text-slate-700 " />
-                    Log Out
+                    <ArrowRightStartOnRectangleIcon className="flex-shrink-0 w-6 h-6 text-white dark:text-slate-700 " />
+                    <p className="text-white">გასვლა</p>
                   </button>
                 </div>
               </div>

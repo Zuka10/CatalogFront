@@ -102,7 +102,7 @@ function Index() {
               "action",
             ]}
           />
-          <tbody className="flex flex-col items-center w-full overflow-x-hidden overflow-y-scroll bg-white dark:bg-slate-800 rounded-b-md h-96 ">
+          <tbody className="flex flex-col items-center w-full overflow-y-hidden bg-white lg:overflow-x-hidden lg:overflow-y-scroll dark:bg-slate-800 rounded-b-md h-96 ">
             {!isLoading &&
               products.length > 0 &&
               filteredCountries.map((product) => (
@@ -127,7 +127,7 @@ function Index() {
                   </td>
                   <td className="w-1/4 p-4 px-6 text-gray-500 dark:text-slate-600">
                     <img
-                      className="ml-14 "
+                      className="ml-6"
                       key={product.id}
                       src={`${import.meta.env.VITE_ecommerce_api}${
                         product.images[0]
@@ -140,14 +140,14 @@ function Index() {
                   <td className="w-1/4 p-4 px-6 text-center ">
                     <Link to={`/adminpanel/categories/${product.id}/edit`}>
                       <button className="ml-4">
-                        <PencilIcon className="w-6 h-6 text-blue-300 hover:text-blue-500 dark:text-slate-700 hover:dark:text-slate-500" />
+                        <PencilIcon className="w-6 h-6 text-blue-400 hover:text-blue-500 dark:text-slate-700 hover:dark:text-slate-500" />
                       </button>
                     </Link>
                     <button
                       onClick={() => deleteProduct(product.id)}
                       className="ml-2"
                     >
-                      <TrashIcon className="w-6 h-6 text-red-300 hover:text-red-500 dark:text-slate-700 hover:dark:text-slate-500" />
+                      <TrashIcon className="w-6 h-6 opacity-70 text-red hover:opacity-100 dark:text-slate-700 hover:dark:text-slate-500" />
                     </button>
                   </td>
                 </tr>

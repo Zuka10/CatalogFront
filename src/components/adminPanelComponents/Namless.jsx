@@ -12,7 +12,7 @@ const Nameless = (props) => {
         {title}
       </p>
       <button className="flex p-2 text-white bg-gray-500 dark:text-slate-900 dark:bg-slate-700 dark:hover:bg-blue-500 hover:bg-gray-600 rounded-xl">
-        <div className="w-6 h-6">{btnIcon}</div>
+        <div className="w-5 h-5">{btnIcon}</div>
         <Link to={path}>{action}</Link>
       </button>
     </div>

@@ -16,23 +16,13 @@ function Create() {
     register,
     handleSubmit,
     reset,
-    // render,
     // watch,
     formState,
     formState: { errors },
   } = useForm();
 
   const [categories, setCategories] = useState([]);
-  const [productImg, setProductImg] = useState([]);
-
-  const onFileChange = (e) => {
-    if (e.target.files) {
-      const imageArray = Array.from(e.target.files).map((file) =>
-        URL.createObjectURL(file)
-      );
-      setProductImg((prevImages) => prevImages.concat(imageArray));
-    }
-  };
+  // const [productImg, setProductImg] = useState([]);
 
   const errorMessage = "failed to create";
   const successfullyMessage = "successfully created";
@@ -40,7 +30,7 @@ function Create() {
   const methodNotAllowedMessage = "method not allowed";
   const emptyValueMessage = "Value is required";
   const emptySelectMessage = "The film is not selected";
-  const emptyImageMessage = "No image chosen";
+  // const emptyImageMessage = "No image chosen";
 
   useEffect(() => {
     if (formState.isSubmitSuccessful) {
@@ -48,7 +38,7 @@ function Create() {
         name: "",
         description: "",
         price: "",
-        image: "",
+        images: "",
       });
     }
   }, [formState, reset]);
@@ -56,6 +46,11 @@ function Create() {
   useEffect(() => {
     getCategories();
   }, []);
+  // const [files, setFiles] = useState([]);
+
+  // const handleChange = (event) => {
+  //   setFiles(event.target.files);
+  // };
 
   // const imageHandler = (e) => {
   //   if (e) {
@@ -63,7 +58,7 @@ function Create() {
   //     const reader = new FileReader();
   //     reader.onload = () => {
   //       if (reader.readyState === 2) {
-  //         setProductImg(reader.result);
+  //         setFiles(reader.result);
   //       }
   //     };
 
@@ -86,21 +81,38 @@ function Create() {
       console.error(err);
     }
   };
+  const [multipleImages, setMultipleImages] = useState([]);
 
+  // Functions to preview multiple images
+  const changeMultipleFiles = (e) => {
+    if (e.target.files) {
+      const imageArray = Array.from(e.target.files).map((file) =>
+        URL.createObjectURL(file)
+      );
+      setMultipleImages((prevImages) => prevImages.concat(imageArray));
+    }
+  };
+  const render = (data) => {
+    return data.map((image) => {
+      return <img className="w-24" src={image} alt="" key={image} />;
+    });
+  };
   const createProduct = async (data) => {
+    console.log(data);
     try {
       const formData = new FormData();
       formData.append("name", data.name);
       formData.append("description", data.description);
       formData.append("unitPrice", data.price);
       formData.append("categoryId", data.categoryId);
-      productImg.forEach((file, index) => {
-        formData.append(`image-${index}`, file);
-      });
-      // formData.append("image-${index}", data.image[0]);
+      // formData.append("image", data.file[0]);
+
+      for (const key of Object.keys(multipleImages)) {
+        formData.append("images", data.images[key]);
+      }
 
       await axios
-        .post("product", formData)
+        .post("https://mc93k7jd-7215.euw.devtunnels.ms/product", formData)
         .then((res) => {
           console.log(res);
           toast.success(successfullyMessage, {
@@ -145,12 +157,29 @@ function Create() {
         className="flex mt-10"
         encType="multipart/form-data"
       >
-        <div className="w-1/2 overflow-hidden rounded-lg md:max-w-xl">
+        <div className="w-1/2 rounded-lg md:max-w-xl ">
+          <div className="w-full">
+            <div>
+              <input
+                type="file"
+                name="images"
+                multiple
+                {...register("images", { required: true })}
+                onChange={changeMultipleFiles}
+              />
+
+              {errors.file && <p className="error">Please select an image</p>}
+            </div>
+
+            <div className="grid-cols-2 bg-green-200 border rounded-lg gap ">
+              {render(multipleImages)}
+            </div>
+          </div>
           <div className="mb-6">
             <div className="overflow-hidden rounded-lg md:max-w-xl">
               <div className=" md:flex">
                 <div className="w-full">
-                  <div
+                  {/* <div
                     className={`h-96 relative flex items-center justify-center  border  border-dashed rounded-lg ${
                       errors.image ? "border-red-500" : "border-gray-500"
                     }`}
@@ -163,46 +192,38 @@ function Create() {
                       {errors.image && (
                         <p className="text-red-500">{errors.image.message}</p>
                       )}
-                    </label>
-                    <input
+                    </label> */}
+                  {/* <input
                       type="file"
                       className="absolute z-20 w-full h-full opacity-0 cursor-pointer "
-                      name="image"
+                      name="images"
                       accept="image/*"
                       multiple
-                      onChange={onFileChange}
                       // onChange={imageHandler(watch("image"))}
-                      // onChange={(e) => imageHandler(e.target.files[0])}
+                      // onChange={handleChange}
+                      onChange={changeMultipleFiles}
                       {...register("image", { required: emptyImageMessage })}
-                    />
-                    {/* <div className="z-20 w-auto h-auto" id="filereaderimage">
-                      {productImg.map((image, index) => (
-                        <img
-                          key={index}
-                          className="w-full h-full"
-                          src={URL.createObjectURL(image)}
-                          alt={`image-${index}`}
-                        />
-                      ))}
-                    </div> */}
-                    {/* {render(productImg)} */}
+                    /> */}
 
-                    {/* <div className="z-10 w-auto h-auto" id="filereaderimage">
-                      {productImg && (
+                  {/* <div className="z-10 w-auto h-auto" id="filereaderimage">
+                      {multipleImages && (
                         <img
                           className="w-full h-full"
-                          src={productImg}
+                          src={multipleImages}
                           alt="imageFile"
                           accept="image/*"
                         />
                       )}
                     </div> */}
-                  </div>
+                  {/* <div className="z-20 mt-6">{render(multipleImages)}</div> */}
                 </div>
               </div>
             </div>
           </div>
         </div>
+        {/* </div> */}
+        {/* input tag for multiple images */}
+
         <div className="w-1/2 ml-10">
           <div className="mb-6">
             <label
@@ -282,6 +303,7 @@ function Create() {
               name="categoryId"
               {...register("categoryId", { required: emptySelectMessage })}
             >
+              {/* <option value="1">test</option> */}
               {categories.map((category) => (
                 <option value={category.id} key={category.id}>
                   {category.name}
@@ -295,6 +317,11 @@ function Create() {
               </p>
             )}
           </div>
+          {/* <div className="flex mb-6 w-min">
+            <div className="flex mb-6 w-min">
+              <button onClick={handleUpload}> Upload images</button>
+            </div>
+          </div> */}
           <div className="flex mb-6 w-min">
             <div className="flex mb-6 w-min">
               <Button title="Create" />
